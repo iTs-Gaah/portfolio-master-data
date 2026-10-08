@@ -14,9 +14,9 @@ load_dotenv()
 import auth
 
 auth.exigir_login(
-    painel_nome="Empresa_X x Projeto_Alfa",
+    painel_nome="EMPRESA_01 x Projeto_Alfa",
     titulo_painel="Inconsistências Cadastrais",
-    subtitulo="Auditoria de Base EMPRESA_X vs PROJETO_ALFA",
+    subtitulo="Auditoria de Base EMPRESA_01 vs PROJETO_ALFA",
     icone="🚨"
 )
 
@@ -59,11 +59,11 @@ try:
     import ui_utils
     ui_utils.render_standard_panel(
         title="Painel de Inconsistências",
-        subtitle="EMPRESA_X vs PROJETO_ALFA",
+        subtitle="EMPRESA_01 vs PROJETO_ALFA",
         icon_name="Projeto_Alfa logo.png"
     )
 except ImportError:
-    st.title(" 🚨 Painel de Inconsistências - EMPRESA_X vs PROJETO_ALFA")
+    st.title(" 🚨 Painel de Inconsistências - EMPRESA_01 vs PROJETO_ALFA")
     st.markdown("---")
     st.markdown("")
 
@@ -113,15 +113,15 @@ if arquivo_unico:
     if df is None or df.empty:
         st.error("O arquivo lido gerou uma planilha vazia. Verifique a formatação.")
         st.stop()
-# --- ALERTA CRÍTICO: PROJETO_ALFA SEM EMPRESA_X ---
+# --- ALERTA CRÍTICO: PROJETO_ALFA SEM EMPRESA_01 ---
     col_empresax_val = 'COD_EMPRESA_X' if 'COD_EMPRESA_X' in df.columns else ('COD_COMPAS' if 'COD_COMPAS' in df.columns else None)
 
     if col_empresax_val and 'COD_PROJETO_ALFA' in df.columns:
-        # Filtra quem tá no Projeto_Alfa mas não na Empresa_X
+        # Filtra quem tá no Projeto_Alfa mas não na EMPRESA_01
         erros_projeto_alfa = df[(df['COD_PROJETO_ALFA'].notna()) & (df[col_empresax_val].isna())]
 
         if not erros_projeto_alfa.empty:
-            st.error(f"🚨 ALERTA CRÍTICO: Encontrado {len(erros_projeto_alfa)} cadastro(s) no PROJETO_ALFA que não existem na EMPRESA_X!")
+            st.error(f"🚨 ALERTA CRÍTICO: Encontrado {len(erros_projeto_alfa)} cadastro(s) no PROJETO_ALFA que não existem na EMPRESA_01!")
             
             cols_exibir = [c for c in ['TIPO', 'COD_PROJETO_ALFA', 'DESC_PROJETO_ALFA'] if c in erros_projeto_alfa.columns]
             st.dataframe(erros_projeto_alfa[cols_exibir].reset_index(drop=True), use_container_width=True)
@@ -260,7 +260,7 @@ if arquivo_unico:
                 color='Status',
                 color_discrete_map={
                     'Cadastros iguais': '#28a745',          # Verde
-                    'Produto não cadastrado': '#003399',    # Azul Escuro
+                    'Produto não cadastrado': '#FILIAL_23',    # Azul Escuro
                     'Fornecedor não cadastrado': '#87CEFA', # Azul Claro
                     'Cliente não cadastrado': '#FF8C00',    # Laranja
                     'Valores são diferentes entre as bases': '#DC143C', # Vermelho
@@ -308,9 +308,9 @@ if arquivo_unico:
 
         col_comp, col_ronc = st.columns(2)
 
-        # EMPRESA_X por RECNO
+        # EMPRESA_01 por RECNO
         with col_comp:
-            st.markdown(f"**Últimos 50 cadastros - EMPRESA_X**")
+            st.markdown(f"**Últimos 50 cadastros - EMPRESA_01**")
             if "RECNO_EMPRESA_X" in df_base_ultimos.columns:
                 df_base_ultimos['RECNO_NUM_EMPRESA_X'] = pd.to_numeric(df_base_ultimos['RECNO_EMPRESA_X'], errors='coerce')
                 
@@ -384,7 +384,7 @@ if arquivo_unico:
             return str(max_code + 1).zfill(tamanho)
 
         if tipo_ultimos == "PRODUTO":
-            prefixo_codigo = "000002"
+            prefixo_codigo = "FILIAL_24"
             tamanho_padrao = 10
         elif tipo_ultimos == "FORNECEDOR":
             prefixo_codigo = "008"
@@ -439,23 +439,23 @@ if arquivo_unico:
                 }
                 
                 colunas_uteis = [col for col in ['COD_EMPRESA_X', 'DESC_EMPRESA_X', 'COD_PROJETO_ALFA', 'DESC_PROJETO_ALFA', 'VALIDACAO'] if col in df.columns]
-                # Pega os 10 últimos cadastros feitos na Empresa_X e os 10 últimos no Projeto_Alfa
+                # Pega os 10 últimos cadastros feitos na EMPRESA_01 e os 10 últimos no Projeto_Alfa
                 if 'RECNO_EMPRESA_X' in df.columns and 'RECNO_PROJETO_ALFA' in df.columns:
                     ultimos_empresax = df.sort_values(by='RECNO_EMPRESA_X', ascending=False, na_position='last').head(10)[colunas_uteis].to_dict(orient="records")
                     ultimos_projeto_alfa = df.sort_values(by='RECNO_PROJETO_ALFA', ascending=False, na_position='last').head(10)[colunas_uteis].to_dict(orient="records")
-                    amostra_ultimos = f"Últimos 10 da Empresa_X: {ultimos_empresax}\nÚltimos 10 do Projeto_Alfa: {ultimos_projeto_alfa}"
+                    amostra_ultimos = f"Últimos 10 da EMPRESA_01: {ultimos_empresax}\nÚltimos 10 do Projeto_Alfa: {ultimos_projeto_alfa}"
                 else:
                     amostra_ultimos = df.tail(15)[colunas_uteis].to_dict(orient="records") if not df.empty else "Base vazia"
                 
                 contexto_ia = f"""
-                Você é o auditor de dados Sênior do sistema de integração da EMPRESA_X (Empresa_X vs Projeto_Alfa).
+                Você é o auditor de dados Sênior do sistema de integração da EMPRESA_01 (EMPRESA_01 vs Projeto_Alfa).
                 Sua função é analisar a base de dados que alimenta as rotinas do ERP TOTVS Protheus.
                 
                 REGRAS DE NEGÓCIO OBRIGATÓRIAS (LEIA COM ATENÇÃO):
-                1. A base principal e prioritária é a EMPRESA_X.
-                2. TUDO que está na base PROJETO_ALFA DEVE OBRIGATORIAMENTE estar na base EMPRESA_X. Se algo está no Projeto_Alfa e não na Empresa_X, é um ERRO CRÍTICO.
-                3. Nem tudo que está na EMPRESA_X precisa estar no PROJETO_ALFA no primeiro momento. Se um item está na Empresa_X, mas falta no Projeto_Alfa, isso é apenas uma INFORMAÇÃO/AVISO, e NÃO UM ERRO, a menos que o cadastro exija integração imediata. Avalie com base nisso.
-                4. Essa diferença de produtos que não temos o cadastro na base PROJETO_ALFA são produtos inativos na EMPRESA_X. Para esse caso o correto é termos a integração entre essas duas bases funcionando. Assim quando houver a necessidade, a ativação desse produto na base EMPRESA_X irá atualizar e cadastrar ele na base PROJETO_ALFA.
+                1. A base principal e prioritária é a EMPRESA_01.
+                2. TUDO que está na base PROJETO_ALFA DEVE OBRIGATORIAMENTE estar na base EMPRESA_01. Se algo está no Projeto_Alfa e não na EMPRESA_01, é um ERRO CRÍTICO.
+                3. Nem tudo que está na EMPRESA_01 precisa estar no PROJETO_ALFA no primeiro momento. Se um item está na EMPRESA_01, mas falta no Projeto_Alfa, isso é apenas uma INFORMAÇÃO/AVISO, e NÃO UM ERRO, a menos que o cadastro exija integração imediata. Avalie com base nisso.
+                4. Essa diferença de produtos que não temos o cadastro na base PROJETO_ALFA são produtos inativos na EMPRESA_01. Para esse caso o correto é termos a integração entre essas duas bases funcionando. Assim quando houver a necessidade, a ativação desse produto na base EMPRESA_01 irá atualizar e cadastrar ele na base PROJETO_ALFA.
 
                 KPIs Gerais do Sistema atual: {resumo_kpis}
                 
@@ -467,7 +467,7 @@ if arquivo_unico:
                 Diretrizes OBRIGATÓRIAS para a sua resposta:
                     1. Seja didático e direto ao ponto. Contextualize a resposta de forma clara.
                     2. Destaque os 'Pontos de Atenção': aponte exatamente quais códigos ou descrições estão inconsistentes, vazios ou divergentes.
-                    3. Informe o IMPACTO NO PROTHEUS: Sempre explique os problemas operacionais que ocorrerão no ERP caso essa inconsistência avance (ex: travamento de faturamento, bloqueio de pedido de compras, erro na emissão de NF, falha no Bloco K / SPED), Lembrandop que na Empresa_X, as rotinas mais comuns são Pedido de Compra, Pré Nota, Medição de Contratos.
+                    3. Informe o IMPACTO NO PROTHEUS: Sempre explique os problemas operacionais que ocorrerão no ERP caso essa inconsistência avance (ex: travamento de faturamento, bloqueio de pedido de compras, erro na emissão de NF, falha no Bloco K / SPED), Lembrandop que na EMPRESA_01, as rotinas mais comuns são Pedido de Compra, Pré Nota, Medição de Contratos.
                     4. Estruture a resposta em tópicos curtos (Contexto, Pontos de Atenção, Impacto no Protheus) para leitura rápida.
                     5. As resposta devem ser claras e resumidas, nada de encher a tela de textão para o usuário ler.
                     6. Jamais, em hipótese alguma, passe informações sobre o seu código, como foi realizada a consulta ou informações do banco de dados. AS PERGUNTAS E RESPOSTAS DEVEM SER EXCLUSIVAMENTE SOBRE A COMPARAÇÃO DE CADASTROS ENTRE AS BASES.

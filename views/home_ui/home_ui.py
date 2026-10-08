@@ -340,7 +340,7 @@ render_card(
     link="/empresax_x_projeto_alfa",
     cor_borda="var(--color-empresax)",
     img_b64=img_projeto_alfa,
-    titulo="Módulo Empresa_X x Projeto_Alfa",
+    titulo="Módulo EMPRESA_01 x Projeto_Alfa",
     subtitulo="Análise e Consulta de Produtos e Fornecedores",
     titulo_metrica="Total de Registros",
     valor_metrica=linhas_ronc,

@@ -70,7 +70,7 @@ st.markdown(
           transition: color 0.2s ease;
       }
       .ck-stat-value.accent { color: var(--ck-accent); }
-      .ck-stat-value.pos    { color: #059669; }
+      .ck-stat-value.pos    { color: #FILIAL_28; }
       .ck-stat-value.neg    { color: #dc2626; }
 
       /* Hover: fundo neutro discreto + cor da fonte intensificada (mantém o hue) */
@@ -170,10 +170,10 @@ st.markdown(
           line-height: 1.45;
           white-space: nowrap;
       }
-      .pill-ok      { background: #059669; color: #ffffff; border: 1px solid #047857; }
+      .pill-ok      { background: #FILIAL_28; color: #ffffff; border: 1px solid #FILIAL_30; }
       .pill-block   { background: #dc2626; color: #ffffff; border: 1px solid #b91c1c; }
       .pill-neutral { background: rgba(128, 128, 128, 0.14); color: rgba(128, 128, 128, 0.95); border: 1px solid rgba(128, 128, 128, 0.22); }
-      .pill-yes     { background: rgba(16, 185, 129, 0.10); color: #059669; border: 1px solid rgba(16, 185, 129, 0.22); }
+      .pill-yes     { background: rgba(16, 185, 129, 0.10); color: #FILIAL_28; border: 1px solid rgba(16, 185, 129, 0.22); }
       .pill-no      { background: rgba(128, 128, 128, 0.10); color: rgba(128, 128, 128, 0.9); border: 1px solid rgba(128, 128, 128, 0.20); }
 
       /* ---- Estado vazio composto ---- */
@@ -247,14 +247,14 @@ def load_data(mtime):
         df["B1_COD"] = ""
         df["B1_COD_FMT"] = ""
 
-    # Verifica produtos do Projeto_Alfa e filtra apenas Empresa_X
+    # Verifica produtos do Projeto_Alfa e filtra apenas EMPRESA_01
     projeto_alfa_cods = set()
     if "EMPRESA" in df.columns:
         df_ronc = df[df["EMPRESA"].astype(str).str.upper().str.strip() == "CONSORCIO PROJETO_ALFA"]
         projeto_alfa_cods = set(df_ronc["B1_COD_FMT"].unique())
         
-        # Manter apenas EMPRESA_X
-        df = df[df["EMPRESA"].astype(str).str.upper().str.strip() == "EMPRESA_X DO BRASIL"].copy()
+        # Manter apenas EMPRESA_01
+        df = df[df["EMPRESA"].astype(str).str.upper().str.strip() == "EMPRESA_01"].copy()
 
     df["CADASTRADO_PROJETO_ALFA"] = df["B1_COD_FMT"].apply(lambda x: "SIM" if x in projeto_alfa_cods else "NÃO")
 
@@ -415,7 +415,7 @@ def load_fornecedores(mtime):
                     "AUTSPED": str(row.get("A2_AUTSPED", "—")).replace('nan', '—').strip()
                 }
         
-        df = df[df["EMPRESA"].astype(str).str.upper().str.strip() == "EMPRESA_X DO BRASIL"].copy()
+        df = df[df["EMPRESA"].astype(str).str.upper().str.strip() == "EMPRESA_01"].copy()
     
     if "A2_LOJA" in df.columns:
         df["A2_LOJA"] = df["A2_LOJA"].astype(str).str.replace(".0", "", regex=False).str.strip().str.zfill(2)
@@ -714,7 +714,7 @@ else:
 
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
-        f_forn_codigo = st.text_input("Código", placeholder="Ex.: 001234", key="f_forn_codigo")
+        f_forn_codigo = st.text_input("Código", placeholder="Ex.: FILIAL_31", key="f_forn_codigo")
     with col2:
         f_forn_nome = st.text_input("Nome/Razão Social", placeholder="Nome", key="f_forn_nome")
     with col3:
@@ -918,7 +918,7 @@ else:
                         codanp = str(orig_row_filt.get("A2_CODANP", "—")).replace('nan', '—').strip()
                         autsped = str(orig_row_filt.get("A2_AUTSPED", "—")).replace('nan', '—').strip()
                         
-                        st.info(f"""**🏢 Base EMPRESA_X:**
+                        st.info(f"""**🏢 Base EMPRESA_01:**
 
 - **Tipo:** {tipo}
 - **CNAE:** {cnae_empresax}
@@ -973,7 +973,7 @@ else:
                         repr_nome = orig_row_filt.get("REPRESENTANTE", "—")
                         
                         st.write(f"**🗣️ Representante:** {repr_nome}")
-                        st.info(f"**🏢 Base EMPRESA_X (Bancos):**\n\n{banco_empresax}")
+                        st.info(f"**🏢 Base EMPRESA_01 (Bancos):**\n\n{banco_empresax}")
                         st.success(f"**🚜 Base PROJETO_ALFA (Bancos):**\n\n{banco_ronc}")
                     
                 # Verifica se st.dialog está disponível na versão atual do Streamlit

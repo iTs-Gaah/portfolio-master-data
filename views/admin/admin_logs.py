@@ -81,7 +81,7 @@ def ler_arquivos_consultados():
             "Caminho": "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Aprovadores.xlsx"
         },
         "Projeto_Alfa.xlsx": {
-            "Painel": "Empresa_X x Projeto_Alfa", 
+            "Painel": "EMPRESA_01 x Projeto_Alfa", 
             "Caminho": "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Projeto_Alfa.xlsx"
         },
         "Produtos.xlsx": {
@@ -196,7 +196,7 @@ def modal_usuarios_gestao():
             
             paineis_disponiveis = [
                 "Parceiro_Y", "Centro de Custo (Edição)", "Gestão de Projetos", 
-                "Controle Telefones", "Controle de EPI", "Empresa_X x Projeto_Alfa", 
+                "Controle Telefones", "Controle de EPI", "EMPRESA_01 x Projeto_Alfa", 
                 "Atualização Fornecedor"
             ]
             st.caption("Administradores têm acesso automático a todos os painéis, incluindo o Admin Logs.")
@@ -274,7 +274,7 @@ def modal_editar_usuario():
         
         paineis_disponiveis = [
             "Parceiro_Y", "Centro de Custo (Edição)", "Gestão de Projetos", 
-            "Controle Telefones", "Controle de EPI", "Empresa_X x Projeto_Alfa", 
+            "Controle Telefones", "Controle de EPI", "EMPRESA_01 x Projeto_Alfa", 
             "Atualização Fornecedor"
         ]
         

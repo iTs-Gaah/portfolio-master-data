@@ -160,7 +160,7 @@ def exigir_login(painel_nome, titulo_painel, subtitulo, icone="🔒"):
                         
         st.markdown(f"""
         <div style="text-align:center; padding-top: 2rem; color: #94A3B8; font-size: 0.8rem;">
-            &copy; 2026 Empresa_X · Segurança de Acesso
+            &copy; 2026 EMPRESA_01 · Segurança de Acesso
         </div>
         """, unsafe_allow_html=True)
     

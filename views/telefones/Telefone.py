@@ -20,7 +20,7 @@ st.markdown("""
         --border-card: #e2e8f0;
         --text-main: #0f172a;
         --text-muted: #64748b;
-        --text-pill: #334155;
+        --text-pill: #FILIAL_26;
         --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         
@@ -42,8 +42,8 @@ st.markdown("""
     @media (prefers-color-scheme: dark) {
         :root {
             --bg-card: #1e293b;
-            --bg-card-hover: #293851;
-            --border-card: #334155;
+            --bg-card-hover: #FILIAL_32;
+            --border-card: #FILIAL_26;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -122,7 +122,7 @@ st.markdown("""
     }
     thead th {
         background-color: #f1f5f9 !important;
-        color: #334155 !important;
+        color: #FILIAL_26 !important;
         font-weight: 600 !important;
         text-transform: uppercase;
         font-size: 12px;
@@ -134,7 +134,7 @@ st.markdown("""
         padding: 12px 16px !important;
         font-size: 13px;
         border-bottom: 1px solid #f1f5f9 !important;
-        color: #475569;
+        color: #FILIAL_29;
         text-align: left !important;
     }
     tbody tr:hover { background-color: #f8fafc !important; }
@@ -143,7 +143,7 @@ st.markdown("""
         thead th {
             background-color: #1e293b !important;
             color: #cbd5e1 !important;
-            border-bottom: 2px solid #334155 !important;
+            border-bottom: 2px solid #FILIAL_26 !important;
         }
         tbody td {
             border-bottom: 1px solid #1e293b !important;
@@ -775,7 +775,7 @@ with tab_lista:
                         idx_status = status_opcoes.index(val_status) if val_status in status_opcoes else 0
                         e_status = st.selectbox("Status", options=status_opcoes, index=idx_status)
                 with c_edit2:
-                    empresas_opcoes = ["", "EMPRESA_X DO BRASIL", "EMPRESA_X ELLENCO", "CONSORCIO PROJETO_ALFA", "FAMILIA", "MERCADO MUNICIPAL"]
+                    empresas_opcoes = ["", "EMPRESA_01", "EMPRESA_01 EMPRESA_02", "CONSORCIO PROJETO_ALFA", "FAMILIA", "MERCADO MUNICIPAL"]
                     val_empresa = clean_nan(chip_selecionado['coligada'])
                     val_emp_upper = val_empresa.strip().upper() if val_empresa else ""
                     if val_emp_upper and val_emp_upper not in empresas_opcoes:
@@ -843,7 +843,7 @@ with tab_lista:
                     t_funcao = st.text_input("Função")
                     t_ramal = st.text_input("Ramal")
                 with c2:
-                    empresas_opcoes = ["", "EMPRESA_X DO BRASIL", "EMPRESA_X ELLENCO", "CONSORCIO PROJETO_ALFA", "FAMILIA", "MERCADO MUNICIPAL"]
+                    empresas_opcoes = ["", "EMPRESA_01", "EMPRESA_01 EMPRESA_02", "CONSORCIO PROJETO_ALFA", "FAMILIA", "MERCADO MUNICIPAL"]
                     t_empresa = st.selectbox("Empresa", options=empresas_opcoes)
                     
                     regionais_opcoes = ["", "FAMILIA", "MERCADO MUNICIPAL", "QSMS", "ENGENHARIA", "SECRETARIA GERAL", "GESTÃO DE PESSOAS", "FINANCEIRO", "COMERCIAL", "GAO", "GESTÃO DE CONTRATOS", "SUPRIMENTOS", "TI", "DIRETORIA", "RECEPÇÃO", "REGIONAL NOROESTE", "REGIONAL SEARA", "REGIONAL LONDRINA", "REGIONAL IMBAU", "REGIONAL LESTE", "REGIONAL PROJETO_ALFA"]

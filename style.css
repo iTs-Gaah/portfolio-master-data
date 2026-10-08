@@ -46,7 +46,7 @@
 @media (prefers-color-scheme: light) {
     .stMarkdown a.glass-card:hover {
         box-shadow: 5px 5px 15px rgba(65, 65, 65, 0.4) !important;
-        border-color: #414141 !important;
+        border-color: #FILIAL_01 !important;
     } 
 }
 

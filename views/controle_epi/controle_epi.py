@@ -638,7 +638,7 @@ def main():
     auth.exigir_login(
         painel_nome="Controle de EPI",
         titulo_painel="Controle de EPI",
-        subtitulo="Empresa_X · Gestão de Equipamentos de Proteção Individual",
+        subtitulo="EMPRESA_01 · Gestão de Equipamentos de Proteção Individual",
         icone="🦺"
     )
 
@@ -658,7 +658,7 @@ def main():
             f'<div style="font-size:27px;font-weight:800;color:#FFFFFF;letter-spacing:-0.03em;line-height:1.15;">'
             f'🦺 Painel de Controle de EPI</div>'
             f'<div style="font-size:12.5px;color:#94A3B8;margin-top:4px;">'
-            f'Empresa_X · Gestão de Equipamentos de Proteção Individual</div>'
+            f'EMPRESA_01 · Gestão de Equipamentos de Proteção Individual</div>'
             f'</div>'
             f'<div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);'
             f'border-radius:10px;padding:8px 16px;text-align:right;">'

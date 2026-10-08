@@ -126,7 +126,7 @@ def rodar_extracao():
         {"arquivo_sql": "Consult_Aprovadores.sql", "arquivo_saida": "Aprovadores.xlsx", "aba": "Plan1", "motor": engine_dw, "painel": "Módulo de Aprovadores"},
         {"arquivo_sql": "Consult_C.Custo.sql", "arquivo_saida": "Aprovadores.xlsx", "aba": "Plan2", "motor": engine_datalake, "painel": "Módulo Centro de Custo"},
         {"arquivo_sql": "Consult_Form.sql", "arquivo_saida": "Aprovadores.xlsx", "aba": "FORM", "motor": engine_datalake, "painel": "Módulo de Aprovadores"},  # banco 2
-        {"arquivo_sql": "Consult_Projeto_Alfa.sql", "arquivo_saida": "Projeto_Alfa.xlsx", "aba": "Plan1", "motor": engine_datalake, "painel": "Módulo Empresa_X x Projeto_Alfa"},
+        {"arquivo_sql": "Consult_Projeto_Alfa.sql", "arquivo_saida": "Projeto_Alfa.xlsx", "aba": "Plan1", "motor": engine_datalake, "painel": "Módulo EMPRESA_01 x Projeto_Alfa"},
         {"arquivo_sql": "Consult_Pendencias_OTIMIZADA.sql", "arquivo_saida": "Aprovadores.xlsx", "aba": "Pendencias", "motor": engine_dw, "painel": "Módulo Centro de Custo"},
         {"arquivo_sql": "Produtos.sql", "arquivo_saida": "Produtos.xlsx", "aba": "Plan1", "motor": engine_datalake, "painel": "Módulo de Produtos"},
         {"arquivo_sql": "Fornecedor.sql", "arquivo_saida": "Produtos.xlsx", "aba": "Plan3", "motor": engine_datalake, "painel": "Módulo de Produtos"}

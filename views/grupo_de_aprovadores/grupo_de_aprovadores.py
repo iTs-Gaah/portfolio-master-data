@@ -428,7 +428,7 @@ if tipo_visao == "Protheus":
                 df_bases['COD_BASE_NUM'] = pd.to_numeric(df_bases[col_cod_base], errors='coerce').fillna(-999).astype(int)
                 df_bases = df_bases[df_bases['COD_BASE_NUM'] != -999]
                 
-                # Bota o zero à esquerda e monta a string (ex: "01 - GRUPO EMPRESA_X")
+                # Bota o zero à esquerda e monta a string (ex: "01 - GRUPO EMPRESA_01")
                 df_bases['BASE_NOME'] = df_bases['COD_BASE_NUM'].astype(str).str.zfill(2) + " - " + df_bases[col_desc_base].astype(str).str.strip()
                 
                 # Tira as duplicatas e ordena
@@ -568,7 +568,7 @@ if tipo_visao == "Protheus":
     # --- ORDENAÇÃO BRUTA PARA NÃO FICAR UMA ZONA ---
     # Cria colunas temporárias com os zeros à esquerda só pra forçar a ordem certa
     df_filtrado['_ORDEM_EMP'] = pd.to_numeric(df_filtrado[col_emp_regras], errors='coerce').fillna(999).astype(int).astype(str).str.zfill(2)
-    df_filtrado['_ORDEM_FIL'] = pd.to_numeric(df_filtrado[col_filial], errors='coerce').fillna(999999).astype(int).astype(str).str.zfill(6)
+    df_filtrado['_ORDEM_FIL'] = pd.to_numeric(df_filtrado[col_filial], errors='coerce').fillna(FILIAL_25).astype(int).astype(str).str.zfill(6)
     df_filtrado['_ORDEM_CC'] = df_filtrado[col_cc_regras].astype(str).str.strip()
     
     # Ordena a porra toda por Empresa > Filial > Centro de Custo

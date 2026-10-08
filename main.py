@@ -358,7 +358,7 @@ raw_pages = [
     st.Page("views/grupo_de_aprovadores/grupo_de_aprovadores.py", title="Grupo de Aprovadores", icon="👥", url_path="grupo_de_aprovadores"),
     st.Page("views/produtos/produtos.py", title="Produtos/Fornecedores", icon="📦", url_path="Produtos"),
     st.Page("views/atualizacao_fornecedor/atualizacao_fornecedor.py", title="Atualização Fornecedor 🔒", icon="📋", url_path="atualizacao_fornecedor"),
-    st.Page("views/empresax_x_projeto_alfa/empresax_x_projeto_alfa.py", title="Empresa_X x Projeto_Alfa 🔒", icon="📈", url_path="empresax_x_projeto_alfa"),
+    st.Page("views/empresax_x_projeto_alfa/empresax_x_projeto_alfa.py", title="EMPRESA_01 x Projeto_Alfa 🔒", icon="📈", url_path="empresax_x_projeto_alfa"),
     st.Page("views/controle_epi/controle_epi.py", title="Controle de EPI 🔒", icon="🦺", url_path="controle_epi"),
     st.Page("views/gestao_projetos/gestao_projetos.py", title="Gestão de Projetos 🔒", icon="📊", url_path="gestao_projetos"),
     st.Page("views/parceiro_y/parceiro_y.py", title="Parceiro_Y 🔒", icon="🛡️", url_path="parceiro_y"),
@@ -411,7 +411,7 @@ paginas_com_att = [
     "Centro de Custo", 
     "Grupo de Aprovadores", 
     "Produtos/Fornecedores", 
-    "Empresa_X x Projeto_Alfa 🔒",
+    "EMPRESA_01 x Projeto_Alfa 🔒",
     "Atualização Fornecedor 🔒",
     "Gestão de Projetos 🔒"
 ]

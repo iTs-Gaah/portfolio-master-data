@@ -2,7 +2,7 @@
 WITH EMPRESA_X_PROD AS (
     SELECT B1_COD, B1_DESC, B1_MSBLQL, R_E_C_N_O_, S_T_A_M_P_
     FROM "datalake_protheus_silver"."sb1_cadastro_produto"
-    WHERE EMPRESA = 'EMPRESA_X DO BRASIL'
+    WHERE EMPRESA = 'EMPRESA_01'
   	AND D_E_L_E_T_ <> '*'
 ),
 PROJETO_ALFA_PROD AS (
@@ -14,7 +14,7 @@ PROJETO_ALFA_PROD AS (
 EMPRESA_X_FORN AS (
     SELECT A2_COD, A2_LOJA, A2_NOME, A2_CGC, A2_MSBLQL, R_E_C_N_O_, S_T_A_M_P_
     FROM "datalake_protheus_silver"."sa2_cadastro_fornecedor"
-    WHERE EMPRESA = 'EMPRESA_X DO BRASIL'
+    WHERE EMPRESA = 'EMPRESA_01
   	AND D_E_L_E_T_ <> '*'
 ),
 PROJETO_ALFA_FORN AS (
@@ -26,7 +26,7 @@ PROJETO_ALFA_FORN AS (
 EMPRESA_X_CLI AS (
     SELECT A1_COD, A1_LOJA, A1_NOME, A1_CGC, A1_MSBLQL, R_E_C_N_O_, S_T_A_M_P_
     FROM "datalake_protheus_silver"."sa1_cadastro_cliente"
-    WHERE EMPRESA = 'EMPRESA_X DO BRASIL'
+    WHERE EMPRESA = 'EMPRESA_01'
   	AND D_E_L_E_T_ <> '*'
 ),
 PROJETO_ALFA_CLI AS (

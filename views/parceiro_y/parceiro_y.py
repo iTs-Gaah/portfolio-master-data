@@ -31,7 +31,7 @@ def encontrar_planilha_onedrive():
             arquivos_base = list_onedrive_folder(PASTA_BASE_ONEDRIVE)
             for item in arquivos_base:
                 nome = item.get("name", "")
-                if nome.startswith("FATURAMENTO EMPRESA_X") and (nome.endswith(".xls") or nome.endswith(".xlsx")):
+                if nome.startswith("FATURAMENTO EMPRESA_01") and (nome.endswith(".xls") or nome.endswith(".xlsx")):
                     planilha_nome = nome
                     planilha_path = f"{PASTA_BASE_ONEDRIVE}/{nome}"
                     break
@@ -183,7 +183,7 @@ import auth
 auth.exigir_login(
     painel_nome="Parceiro_Y",
     titulo_painel="Faturamento Parceiro_Y",
-    subtitulo="Empresa_X · Gestão de Faturamento de Saúde Ocupacional",
+    subtitulo="EMPRESA_01 · Gestão de Faturamento de Saúde Ocupacional",
     icone="🏥"
 )
 
@@ -220,9 +220,9 @@ def _norm_txt(s):
 # EMPRESA (coluna EMPRESA da aba CTT) que CADA unidade deve ter nos seus centros de custo.
 # Se o CC informado tiver EMPRESA diferente da esperada para a unidade, a linha é destacada.
 EMPRESA_ESPERADA_POR_UNIDADE = {
-    'EMPRESA_X DO BRASIL':          '01 - EMPRESA_X DO BRASIL',
-    'CONSORCIO EMPRESA_X ELLENCO':  '01 - EMPRESA_X DO BRASIL',
-    'EMPRESA_X CONSORCIO PROJETO_ALFA': '10 - CONSORCIO PROJETO_ALFA',
+    'EMPRESA_MATRIZ': '01 - EMPRESA_01 DO BRASIL',
+    'CONSORCIO_BETA': '07 - EMPRESA_01 DO BRASIL',
+    'CONSORCIO_DELTA': '10 - CONSORCIO PROJETO_ALFA',
 }
 
 def calcular_divergencia(row):
@@ -750,10 +750,10 @@ def carregar_dados(arquivo):
                     unidade_rm = emp
                 else:
                     unidade_rm = (emp + ' - ' + fil) if emp and fil else (emp or fil or '')
-                if unidade_rm in ('EMPRESA_X CONSÓRCIO PROJETO_ALFA', 'EMPRESA_X CONSORCIO PROJETO_ALFA'):
+                if unidade_rm in ('EMPRESA_01 CONSÓRCIO PROJETO_ALFA', 'EMPRESA_01 CONSORCIO PROJETO_ALFA'):
                     unidade_rm = 'CONSORCIO PROJETO_ALFA'
-                elif unidade_rm == 'CONSÓRCIO EMPRESA_X ELLENCO':
-                    unidade_rm = 'CONSORCIO EMPRESA_X ELLENCO'
+                elif unidade_rm == 'CONSÓRCIO EMPRESA_01 EMPRESA_02':
+                    unidade_rm = 'CONSORCIO_C'
                 nome_rm = nome_raw if nome_raw and nome_raw.upper() not in ('NAN', 'NONE') else 'Desconhecido'
                 regional_rm = str(row_rm[col_rm_reg[0]]).strip() if col_rm_reg else 'NÃO INFORMADO'
                 depto_rm = str(row_rm[col_rm_depto[0]]).strip() if col_rm_depto else ''
@@ -829,9 +829,9 @@ def carregar_dados(arquivo):
                 df_func_soc['UNIDADE'] = 'UNIDADE GERAL'
             df_func_soc['UNIDADE'] = df_func_soc['UNIDADE'].astype(str).str.strip().str.upper()
             df_func_soc['UNIDADE'] = df_func_soc['UNIDADE'].replace({
-                'EMPRESA_X CONSÓRCIO PROJETO_ALFA': 'CONSORCIO PROJETO_ALFA',
-                'EMPRESA_X CONSORCIO PROJETO_ALFA': 'CONSORCIO PROJETO_ALFA',
-                'CONSÓRCIO EMPRESA_X ELLENCO': 'CONSORCIO EMPRESA_X ELLENCO'
+                'EMPRESA_01 CONSÓRCIO PROJETO_ALFA': 'CONSORCIO PROJETO_ALFA',
+                'EMPRESA_01 CONSORCIO PROJETO_ALFA': 'CONSORCIO PROJETO_ALFA',
+                'CONSÓRCIO EMPRESA_01 EMPRESA_02': 'CONSORCIO_C'
             })
                 
             # Identificar Regional/Departamento
@@ -1114,13 +1114,13 @@ def carregar_dados(arquivo):
             uni_rm_clean = uni_rm
             
         # Padronizar nomes conhecidos
-        if uni_rm_clean in ('EMPRESA_X CONSÓRCIO PROJETO_ALFA', 'EMPRESA_X CONSORCIO PROJETO_ALFA'):
+        if uni_rm_clean in ('EMPRESA_01 CONSÓRCIO PROJETO_ALFA', 'EMPRESA_01 CONSORCIO PROJETO_ALFA'):
             uni_rm_clean = 'CONSORCIO PROJETO_ALFA'
-        elif uni_rm_clean in ('CONSÓRCIO EMPRESA_X ELLENCO', 'CONSORCIO EMPRESA_X ELLENCO'):
-            uni_rm_clean = 'CONSORCIO EMPRESA_X ELLENCO'
+        elif uni_rm_clean in ('CONSÓRCIO EMPRESA_01 EMPRESA_02', 'CONSORCIO_C'):
+            uni_rm_clean = 'CONSORCIO_C'
             
         # Se a coligada pertencer a uma dessas 3, forçamos a unidade ser ela mesma
-        if uni_rm_clean in ('EMPRESA_X DO BRASIL', 'CONSORCIO EMPRESA_X ELLENCO', 'CONSORCIO PROJETO_ALFA'):
+        if uni_rm_clean in ('EMPRESA_01 DO BRASIL', 'CONSORCIO_C', 'CONSORCIO PROJETO_ALFA'):
             uni = uni_rm_clean
         else:
             uni = _unidade_do_ausente(info.get('cc_cod', '')) or 'CC NÃO MAPEADO NO CTT'
@@ -1190,12 +1190,12 @@ def carregar_dados(arquivo):
             # Normalização final das UNIDADES
             if 'UNIDADE' in df.columns:
                 df['UNIDADE'] = df['UNIDADE'].replace({
-                    'EMPRESA_X CONSÓRCIO PROJETO_ALFA': 'CONSORCIO PROJETO_ALFA',
-                    'EMPRESA_X CONSORCIO PROJETO_ALFA': 'CONSORCIO PROJETO_ALFA',
-                    'CONSÓRCIO EMPRESA_X ELLENCO': 'CONSORCIO EMPRESA_X ELLENCO',
-                    'EMPRESA_X D': 'EMPRESA_X DO BRASIL',
-                    'EMPRESA_X D8': 'EMPRESA_X DO BRASIL',
-                    'EMPRESA_X DO BRASIL DISTRIBUIDORA DE DERIVADOS DE PETROLEO LTDA - 30824': 'EMPRESA_X DO BRASIL'
+                    'EMPRESA_01 CONSÓRCIO PROJETO_ALFA': 'CONSORCIO PROJETO_ALFA',
+                    'EMPRESA_01 CONSORCIO PROJETO_ALFA': 'CONSORCIO PROJETO_ALFA',
+                    'CONSÓRCIO EMPRESA_01 EMPRESA_02': 'CONSORCIO_C',
+                    'EMPRESA_01 D': 'EMPRESA_01 DO BRASIL',
+                    'EMPRESA_01 D8': 'EMPRESA_01 DO BRASIL',
+                    'EMPRESA_01 DO BRASIL DISTRIBUIDORA DE DERIVADOS DE PETROLEO LTDA - 30824': 'EMPRESA_01 DO BRASIL'
                 })
 
     return fatura_final, vidas_final, faltas_final, alertas, mapa_ctt
@@ -1223,7 +1223,7 @@ css = """
         --border-card: #e8edf3;
         --text-main: #0f172a;
         --text-muted: #64748b;
-        --text-pill: #334155;
+        --text-pill: #FILIAL_26;
         --accent: #6366f1;
         --accent-hover: #4f46e5;
         --radius: 16px;
@@ -1263,9 +1263,9 @@ css = """
     @media (prefers-color-scheme: dark) {
         :root {
             --bg-card: #1e293b;
-            --bg-card-hover: #273349;
+            --bg-card-hover: #FILIAL_27;
             --bg-metric-pill: rgba(255, 255, 255, 0.10);
-            --border-card: #334155;
+            --border-card: #FILIAL_26;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --text-pill: #f1f5f9;
@@ -1524,8 +1524,8 @@ css = """
     }
     div[data-testid="column"]:nth-child(7) div[data-testid="stPopover"] > button:hover {
         background: rgba(16, 185, 129, 0.08) !important;
-        border-color: #059669 !important;
-        color: #059669 !important;
+        border-color: #FILIAL_28 !important;
+        color: #FILIAL_28 !important;
         transform: translateY(-1px);
     }
 
@@ -1546,7 +1546,7 @@ css = """
     
     thead th {
         background-color: #f1f5f9 !important;
-        color: #334155 !important;
+        color: #FILIAL_26 !important;
         font-weight: 600 !important;
         text-transform: uppercase;
         font-size: 12px;
@@ -1559,7 +1559,7 @@ css = """
         padding: 12px 16px !important;
         font-size: 13px;
         border-bottom: 1px solid #f1f5f9 !important;
-        color: #475569;
+        color: #FILIAL_29;
         text-align: left !important;
     }
     
@@ -1571,7 +1571,7 @@ css = """
         thead th {
             background-color: #1e293b !important;
             color: #cbd5e1 !important;
-            border-bottom: 2px solid #334155 !important;
+            border-bottom: 2px solid #FILIAL_26 !important;
         }
         tbody td {
             border-bottom: 1px solid #1e293b !important;
@@ -1783,7 +1783,7 @@ if caminho_onedrive:
                f"· atualizada em {_mtime}")
 else:
     st.warning("⚠️ Não encontrei a planilha na pasta do OneDrive "
-               f"(`{PASTA_BASE_ONEDRIVE}`). Certifique-se de que o arquivo começa com 'FATURAMENTO EMPRESA_X' e tente novamente ou faça o upload manual abaixo.")
+               f"(`{PASTA_BASE_ONEDRIVE}`). Certifique-se de que o arquivo começa com 'FATURAMENTO EMPRESA_01' e tente novamente ou faça o upload manual abaixo.")
 
 fonte_dados = caminho_onedrive
 if caminho_onedrive:
@@ -1957,13 +1957,13 @@ if fonte_dados:
                         empresa_n = _norm_txt(info.get('empresa', ''))
                         filial_n = _norm_txt(info.get('filial', ''))
                         
-                        if uni_n == _norm_txt('EMPRESA_X DO BRASIL') or uni_n == _norm_txt('EMPRESA_X'):
-                            if empresa_n == _norm_txt('01 - EMPRESA_X DO BRASIL'):
+                        if uni_n == _norm_txt('EMPRESA_01 DO BRASIL') or uni_n == _norm_txt('EMPRESA_01'):
+                            if empresa_n == _norm_txt('01 - EMPRESA_01 DO BRASIL'):
                                 validos.append(cc_str)
                             continue
                             
-                        if uni_n == _norm_txt('CONSORCIO EMPRESA_X ELLENCO') or uni_n == _norm_txt('EMPRESA_X ELLENCO'):
-                            if empresa_n == _norm_txt('01 - EMPRESA_X DO BRASIL') and filial_n == _norm_txt('040101 - CONSORCIO EMPRESA_X ELLENCO'):
+                        if uni_n == _norm_txt('CONSORCIO_C') or uni_n == _norm_txt('EMPRESA_01 EMPRESA_02'):
+                            if empresa_n == _norm_txt('01 - EMPRESA_01 DO BRASIL') and filial_n == _norm_txt('FILIAL_10 - CONSORCIO_C'):
                                 validos.append(cc_str)
                             continue
                             
