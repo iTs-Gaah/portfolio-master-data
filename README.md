@@ -1,6 +1,6 @@
 # Corporate Data Management & Extraction Platform
 
-Uma solução arquitetada de ponta a ponta para resolver desafios complexos de **Governança de Dados, Automação de Rotinas e Controle de Acessos** em um ambiente corporativo. Este projeto demonstra a integração entre serviços de processamento assíncrono de dados, orquestração contínua e um painel interativo de gestão.
+Uma plataforma desenvolvida para resolver problemas de **Governança de Dados, Automação de Rotinas e Controle de Acessos** em ambientes corporativos. O projeto demonstra a integração entre serviços de extração de dados em background e um painel web interativo para os usuários finais.
 
 ## 🎯 O Problema de Negócio
 
@@ -10,11 +10,11 @@ Em corporações com grandes volumes de dados operacionais e financeiros, a extr
 3. **Controle de Acessos e Segurança:** O desafio de compartilhar informações gerenciais com segurança, garantindo que cada usuário acesse exclusivamente os painéis referentes à sua área de atuação (silos de permissão).
 
 **A Solução:**
-Foi desenvolvida uma plataforma unificada que conta com um **Bot Agendador** rodando 24/7 (em background) para automatizar pipelines de extração. O bot conecta-se a bases como Data Warehouses e Data Lakes, processa as informações e as disponibiliza automaticamente no sistema de nuvem corporativa e no repositório local. Em paralelo, um **Painel de Gestão (Dashboard Web)** consome esses dados com rigoroso controle de acesso (Auth Customizado e RBAC) de forma transparente para os usuários finais.
+O projeto conta com um **Bot Agendador** rodando em background (24/7) para automatizar rotinas de extração. Ele conecta-se a bases de dados (DW e Datalakes), processa as informações e sincroniza os arquivos finais na nuvem corporativa e no repositório local. Em paralelo, um **Painel de Gestão (Dashboard Web)** consome esses dados com um sistema de autenticação próprio e controle de nível de acesso (RBAC).
 
 ## 🏗️ Arquitetura da Solução
 
-O ecossistema é totalmente conteinerizado e dividido em dois microsserviços principais orquestrados pelo **Docker Compose**:
+A aplicação é inteiramente conteinerizada e dividida em dois serviços principais orquestrados pelo **Docker Compose**:
 
 1. **Bot Extrator (Background Service):**
    - Um serviço construído em Python rodando em loop infinito que dispara pipelines de extração de dados em horários estratégicos ao longo do dia.
@@ -49,8 +49,8 @@ A plataforma foi arquitetada para ser executada rapidamente em qualquer máquina
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/repo-name.git
-   cd repo-name
+   git clone https://github.com/iTs-Gaah/portfolio-master-data.git
+   cd portfolio-master-data
    ```
 
 2. **Configuração de Variáveis de Ambiente:**
@@ -92,7 +92,7 @@ A plataforma foi arquitetada para ser executada rapidamente em qualquer máquina
 
 ## 📈 Impacto no Negócio
 
-- **Redução de Intervenção Humana:** Automatização de ponta a ponta na geração de arquivos estruturados, reduzindo drasticamente falhas operacionais manuais.
+- **Redução de Intervenção Humana:** Automatização de ponta a ponta na geração de arquivos estruturados, mitigando falhas e inconsistências manuais.
 - **Single Source of Truth (Fonte Única de Verdade):** Os dados disponibilizados no Painel e na nuvem corporativa são sempre reflexos precisos da base de dados no exato momento programado, padronizando os relatórios consumidos pelas áreas de negócio.
 - **Performance e Escalabilidade:** A segregação das rotinas de extração (Bot) da visualização (Streamlit) garante que a ferramenta web opere sem lentidão durante o processamento das rotinas pesadas (que envolvem leitura e exportação de dezenas de milhares de linhas para o Excel de forma agrupada).
 
