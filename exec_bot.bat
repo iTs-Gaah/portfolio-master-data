@@ -1,8 +1,8 @@
 @echo off
-cd /d "C:\Users\usuario_1\VS Code\Dashboard"
+cd /d "%~dp0"
 
-if exist "C:\Users\usuario_1\VS Code\.venv\Scripts\python.exe" (
-    "C:\Users\usuario_1\VS Code\.venv\Scripts\python.exe" "C:\Users\usuario_1\VS Code\Dashboard\Bot.py"
+if exist ".venv\Scripts\python.exe" (
+    ".venv\Scripts\python.exe" "Bot.py"
 ) else (
     echo Ambiente virtual .venv nao encontrado!
 )
