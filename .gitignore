@@ -1,0 +1,18 @@
+# Ambiente e Credenciais
+.env
+Password.env
+.streamlit/
+secrets.toml
+
+# Logs
+log_execucao.txt
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Mac
+.DS_Store

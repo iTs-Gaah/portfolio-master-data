@@ -1,0 +1,126 @@
+:root {
+    /* Module Colors */
+    --color-aprovadores: #F1C40F; /* Amarelo */
+    --color-empresax: #E74C3C; /* Vermelho */
+    --color-ccusto: #2ECC71; /* Verde */
+    --color-fornecedores: #9B59B6; /* Roxo */
+    --color-produtos: #E67E22; /* Laranja */
+
+    /* Typography & Spacing */
+    --border-radius-main: 14px;
+    --border-radius-sm: 8px;
+    --padding-card: 22px 28px;
+    --transition-speed: 0.3s;
+}
+
+/* Glassmorphism Cards - Theme Aware */
+.stMarkdown a.glass-card {
+    background: var(--secondary-background-color) !important;
+    border: 1px solid rgba(130, 130, 130, 0.4) !important; /* Stronger border for separation */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: var(--border-radius-main) !important;
+    padding: var(--padding-card) !important;
+    transition: all var(--transition-speed) ease !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12) !important; /* Deeper shadow for contrast */
+    text-decoration: none !important;
+    display: block !important;
+    color: var(--text-color) !important;
+}
+
+.stMarkdown a.glass-card *,
+.stMarkdown a.glass-card:visited, 
+.stMarkdown a.glass-card:active {
+    text-decoration: none !important;
+}
+
+.stMarkdown a.glass-card:hover {
+    transform: translateX(5px) !important;
+    /* Glow effect matching the sidebar style */
+    box-shadow: 5px 5px 15px rgba(192, 192, 192, 0.3) !important;
+    border-color: rgba(192, 192, 192, 0.9) !important;
+    background: var(--background-color) !important;
+    text-decoration: none !important;
+}
+
+@media (prefers-color-scheme: light) {
+    .stMarkdown a.glass-card:hover {
+        box-shadow: 5px 5px 15px rgba(65, 65, 65, 0.4) !important;
+        border-color: #414141 !important;
+    } 
+}
+
+.stMarkdown a.glass-card h3 {
+    margin: 0 0 5px 0 !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    color: var(--text-color) !important;
+    text-decoration: none !important;
+}
+
+.stMarkdown a.glass-card p {
+    margin: 0 !important;
+    color: var(--text-color) !important;
+    opacity: 0.8 !important;
+    font-size: 0.95rem !important;
+    text-decoration: none !important;
+}
+
+.stMarkdown a.glass-card .metric-title {
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    color: var(--text-color) !important;
+    opacity: 0.6 !important;
+    margin-bottom: 4px !important;
+    text-decoration: none !important;
+}
+
+.stMarkdown a.glass-card .metric-value {
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    margin-bottom: 6px !important;
+    text-decoration: none !important;
+}
+
+.stMarkdown a.glass-card .metric-date {
+    font-size: 0.8rem !important;
+    opacity: 0.7 !important;
+    text-decoration: none !important;
+}
+
+/* Alerts modernization */
+[data-testid="stAlert"] {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: var(--border-radius-sm) !important;
+    backdrop-filter: blur(8px) !important;
+    border-left: 5px solid var(--color-aprovadores) !important; /* fallback */
+}
+
+[data-testid="stAlert"] > div {
+    color: var(--text-primary) !important;
+}
+
+[data-testid="stAlert"][data-baseweb="notification"] {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Specific Alert Colors */
+[data-testid="stAlert"]:has([aria-label="warning"]) {
+    border-left-color: var(--color-produtos) !important;
+}
+[data-testid="stAlert"]:has([aria-label="error"]) {
+    border-left-color: var(--color-empresax) !important;
+}
+[data-testid="stAlert"]:has([aria-label="success"]) {
+    border-left-color: var(--color-ccusto) !important;
+}
+
+/* Tables */
+[data-testid="stDataFrame"], [data-testid="stTable"] {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+}

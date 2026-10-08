@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  painel-cadastros:
+    build: .
+    container_name: painel_cadastros
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    environment:
+      - STREAMLIT_SERVER_ENABLE_CORS=false
+      - STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./data:/app/data
+      - ./log_execucao.txt:/app/log_execucao.txt
+
+  bot-extrator:
+    build: .
+    container_name: bot_extrator
+    restart: unless-stopped
+    entrypoint: ["python", "agendador_bot.py"]
+    env_file:
+      - .env
+    environment:
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./data:/app/data
+      - ./log_execucao.txt:/app/log_execucao.txt
