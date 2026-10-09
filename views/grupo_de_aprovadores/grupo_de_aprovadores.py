@@ -546,7 +546,7 @@ if tipo_visao == "Protheus":
     if busca_cc:
         termo_limpo = re.sub(r'[\s\-_]+', ' ', busca_cc.strip())
         termo_regex = re.escape(termo_limpo).replace(r'\ ', r'[\s\-_]+')
-        # Usa (?:^|[^a-zA-Z0-9]) para garantir que encontre a palavra isolada, no início ou após caracteres especiais (ex: "TI" não traz "LOGISTICA", mas "SEARA" traz "-SEARA-")
+        # Usa (?:^|[^a-zA-Z0-9]) para garantir que encontre a palavra isolada, no início ou após caracteres especiais (ex: "TI" não traz "LOGISTICA", mas "REGIONAL_3" traz "-REGIONAL_3-")
         pattern_desc = rf'(?:^|[^a-zA-Z0-9]){termo_regex}'
         df_filtrado = df_filtrado[
             df_filtrado[col_cc_regras].astype(str).str.contains(termo_regex, case=False, na=False, regex=True) |

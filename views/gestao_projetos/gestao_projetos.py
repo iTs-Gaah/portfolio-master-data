@@ -98,7 +98,7 @@ def baixar_planilha_onedrive():
     try:
         local_dir = "/app/data"
         os.makedirs(local_dir, exist_ok=True)
-        pasta_onedrive_rel = "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Projetos.xlsx"
+        pasta_onedrive_rel = "Pasta_Compartilhada/Painel_Gestao/Projetos.xlsx"
         
         arquivo_excel = download_excel_from_onedrive(pasta_onedrive_rel)
         local_path = os.path.join(local_dir, "Projetos.xlsx")

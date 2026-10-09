@@ -62,31 +62,31 @@ def ler_arquivos_consultados():
     mapa_arquivos = {
         "Controle Linhas Corporativas.xlsx": {
             "Painel": "Controle Telefones", 
-            "Caminho": "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Contatos/Controle Linhas Corporativas.xlsx"
+            "Caminho": "Pasta_Compartilhada/Painel_Gestao/Contatos/Controle Linhas Corporativas.xlsx"
         },
         "EPIS 16-01-2026.xlsx": {
             "Painel": "Controle de EPI", 
-            "Caminho": "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/App controle EPI/EPIS 16-01-2026.xlsx"
+            "Caminho": "Pasta_Compartilhada/Painel_Gestao/App controle EPI/EPIS 16-01-2026.xlsx"
         },
         "Controle Cadastros.xlsx": {
             "Painel": "Atualização Fornecedor", 
-            "Caminho": "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Controle Cadastros.xlsx"
+            "Caminho": "Pasta_Compartilhada/Painel_Gestao/Controle Cadastros.xlsx"
         },
         "Projetos.xlsx": {
             "Painel": "Gestão de Projetos", 
-            "Caminho": "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Projetos.xlsx"
+            "Caminho": "Pasta_Compartilhada/Painel_Gestao/Projetos.xlsx"
         },
         "Aprovadores.xlsx": {
             "Painel": "Grupo de Aprovadores / CC", 
-            "Caminho": "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Aprovadores.xlsx"
+            "Caminho": "Pasta_Compartilhada/Painel_Gestao/Aprovadores.xlsx"
         },
         "Projeto_Alfa.xlsx": {
             "Painel": "EMPRESA_01 x Projeto_Alfa", 
-            "Caminho": "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Projeto_Alfa.xlsx"
+            "Caminho": "Pasta_Compartilhada/Painel_Gestao/Projeto_Alfa.xlsx"
         },
         "Produtos.xlsx": {
             "Painel": "Produtos", 
-            "Caminho": "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Produtos.xlsx"
+            "Caminho": "Pasta_Compartilhada/Painel_Gestao/Produtos.xlsx"
         }
     }
     

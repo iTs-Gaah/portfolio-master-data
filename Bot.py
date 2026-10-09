@@ -193,7 +193,7 @@ def rodar_extracao():
                 from onedrive_downloader import upload_excel_to_onedrive
                 with open(caminho_final, "rb") as f:
                     conteudo = f.read()
-                pasta_sharepoint = f"Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/{arquivo}"
+                pasta_sharepoint = f"Pasta_Compartilhada/Painel_Gestao/{arquivo}"
                 upload_excel_to_onedrive(pasta_sharepoint, conteudo)
                 msg_up = f"SUCESSO: {arquivo} sincronizado no SharePoint."
                 print(msg_up)

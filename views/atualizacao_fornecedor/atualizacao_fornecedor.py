@@ -18,8 +18,8 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from onedrive_downloader import download_excel_from_onedrive, upload_excel_to_onedrive
 
-ONEDRIVE_PATH = 'Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Controle Cadastros.xlsx'
-FILE_PATH = 'Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Controle Cadastros.xlsx' # Mantido apenas se houver gravação posterior
+ONEDRIVE_PATH = 'Pasta_Compartilhada/Painel_Gestao/Controle Cadastros.xlsx'
+FILE_PATH = 'Pasta_Compartilhada/Painel_Gestao/Controle Cadastros.xlsx' # Mantido apenas se houver gravação posterior
 NOME_ABA = 'Alt_Att Fornec'
 
 def formata_zerados():

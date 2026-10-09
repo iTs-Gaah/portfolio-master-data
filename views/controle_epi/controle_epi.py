@@ -14,7 +14,7 @@ load_dotenv()
 
 # ── Constantes de módulo ───────────────────────────────────────────────────────
 CAMINHO_ARQUIVO = (
-    "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/App controle EPI/EPIS 16-01-2026.xlsx"
+    "Pasta_Compartilhada/Painel_Gestao/App controle EPI/EPIS 16-01-2026.xlsx"
 )
 _DIR_ICONS       = os.path.join(os.path.dirname(__file__), '..', 'EPI')
 _ICON_ATUALIZAR  = os.path.normpath(os.path.join(_DIR_ICONS, 'atualizar.png'))

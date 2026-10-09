@@ -17,7 +17,7 @@ except Exception:
 diretorio_base = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 IMG_DIR = os.path.join(diretorio_base, "assets")
 EXCEL_DIR = "/app/data"
-CAMINHO_ONEDRIVE = "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Controle Cadastros.xlsx"
+CAMINHO_ONEDRIVE = "Pasta_Compartilhada/Painel_Gestao/Controle Cadastros.xlsx"
 
 # Função pra ler as imagens locais
 def carregar_imagem_base64(nome_arquivo):

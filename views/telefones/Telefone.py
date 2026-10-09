@@ -163,8 +163,8 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from onedrive_downloader import download_excel_from_onedrive
 
-ONEDRIVE_PATH = 'QSMS - Administrativo - Área de Cadastros/Painel Gestão de Cadastros/Contatos/Controle Linhas Corporativas.xlsx'
-EXCEL_PATH = 'QSMS - Administrativo - Área de Cadastros/Painel Gestão de Cadastros/Contatos/Controle Linhas Corporativas.xlsx'
+ONEDRIVE_PATH = 'Pasta_Compartilhada/Painel_Gestao/Contatos/Controle Linhas Corporativas.xlsx'
+EXCEL_PATH = 'Pasta_Compartilhada/Painel_Gestao/Contatos/Controle Linhas Corporativas.xlsx'
 
 def get_connection():
     return sqlite3.connect(DB_PATH, check_same_thread=False)
@@ -241,14 +241,14 @@ def init_db():
     import os
     from dotenv import load_dotenv
     load_dotenv()
-    user_gabriel = os.getenv("TELEFONE_USER_GABRIEL", "usuario_1")
-    pass_gabriel = os.getenv("TELEFONE_PWD_GABRIEL")
+    user_gabriel = os.getenv("TELEFONE_USER_ADMIN", "admin_telefonia")
+    pass_gabriel = os.getenv("TELEFONE_PWD_ADMIN")
     
-    user_dirlei = os.getenv("TELEFONE_USER_DIRLEI", "usuario_3")
-    pass_dirlei = os.getenv("TELEFONE_PWD_DIRLEI")
+    user_dirlei = os.getenv("TELEFONE_USER_OP", "op_telefonia")
+    pass_dirlei = os.getenv("TELEFONE_PWD_OP")
     
-    user_bianca = os.getenv("TELEFONE_USER_BIANCA", "usuario_4")
-    pass_bianca = os.getenv("TELEFONE_PWD_BIANCA")
+    user_bianca = os.getenv("TELEFONE_USER_AUDITOR", "auditor_telefonia")
+    pass_bianca = os.getenv("TELEFONE_PWD_AUDITOR")
 
     # Inserir usuários caso não existam
     if pass_gabriel:
@@ -270,10 +270,10 @@ def init_db():
     c.execute("UPDATE chips SET status_chip = 'ATIVO' WHERE status_chip IN ('nan', 'NaN', 'None', '') OR status_chip IS NULL")
     
     # Atualizar padronização de regionais
-    c.execute("UPDATE chips SET regional = 'REGIONAL LONDRINA' WHERE regional = 'LONDRINA'")
-    c.execute("UPDATE chips SET regional = 'REGIONAL NOROESTE' WHERE regional = 'CIANORTE'")
-    c.execute("UPDATE historico SET regional = 'REGIONAL LONDRINA' WHERE regional = 'LONDRINA'")
-    c.execute("UPDATE historico SET regional = 'REGIONAL NOROESTE' WHERE regional = 'CIANORTE'")
+    c.execute("UPDATE chips SET regional = 'REGIONAL_1' WHERE regional = 'REGIONAL_1'")
+    c.execute("UPDATE chips SET regional = 'REGIONAL_2' WHERE regional = 'REGIONAL_2'")
+    c.execute("UPDATE historico SET regional = 'REGIONAL_1' WHERE regional = 'REGIONAL_1'")
+    c.execute("UPDATE historico SET regional = 'REGIONAL_2' WHERE regional = 'REGIONAL_2'")
     
     # Atualizar VERIFICADO de OK para SIM
     c.execute("UPDATE chips SET verificado = 'SIM' WHERE UPPER(TRIM(verificado)) = 'OK'")
@@ -783,7 +783,7 @@ with tab_lista:
                     idx_empresa = empresas_opcoes.index(val_emp_upper) if val_emp_upper in empresas_opcoes else 0
                     e_empresa = st.selectbox("Empresa", options=empresas_opcoes, index=idx_empresa)
                     
-                    regionais_opcoes = ["", "FAMILIA", "MERCADO MUNICIPAL", "QSMS", "ENGENHARIA", "SECRETARIA GERAL", "GESTÃO DE PESSOAS", "FINANCEIRO", "COMERCIAL", "GAO", "GESTÃO DE CONTRATOS", "SUPRIMENTOS", "TI", "DIRETORIA", "RECEPÇÃO", "REGIONAL NOROESTE", "REGIONAL SEARA", "REGIONAL LONDRINA", "REGIONAL IMBAU", "REGIONAL LESTE", "REGIONAL PROJETO_ALFA"]
+                    regionais_opcoes = ["", "FAMILIA", "MERCADO MUNICIPAL", "QSMS", "ENGENHARIA", "SECRETARIA GERAL", "GESTÃO DE PESSOAS", "FINANCEIRO", "COMERCIAL", "GAO", "GESTÃO DE CONTRATOS", "SUPRIMENTOS", "TI", "DIRETORIA", "RECEPÇÃO", "REGIONAL_2", "REGIONAL_3", "REGIONAL_1", "REGIONAL_4", "REGIONAL_5", "REGIONAL PROJETO_ALFA"]
                     val_regional = clean_nan(chip_selecionado['regional'])
                     val_reg_upper = val_regional.strip().upper() if val_regional else ""
                     if val_reg_upper and val_reg_upper not in regionais_opcoes:
@@ -846,7 +846,7 @@ with tab_lista:
                     empresas_opcoes = ["", "EMPRESA_01", "EMPRESA_01 EMPRESA_02", "CONSORCIO PROJETO_ALFA", "FAMILIA", "MERCADO MUNICIPAL"]
                     t_empresa = st.selectbox("Empresa", options=empresas_opcoes)
                     
-                    regionais_opcoes = ["", "FAMILIA", "MERCADO MUNICIPAL", "QSMS", "ENGENHARIA", "SECRETARIA GERAL", "GESTÃO DE PESSOAS", "FINANCEIRO", "COMERCIAL", "GAO", "GESTÃO DE CONTRATOS", "SUPRIMENTOS", "TI", "DIRETORIA", "RECEPÇÃO", "REGIONAL NOROESTE", "REGIONAL SEARA", "REGIONAL LONDRINA", "REGIONAL IMBAU", "REGIONAL LESTE", "REGIONAL PROJETO_ALFA"]
+                    regionais_opcoes = ["", "FAMILIA", "MERCADO MUNICIPAL", "QSMS", "ENGENHARIA", "SECRETARIA GERAL", "GESTÃO DE PESSOAS", "FINANCEIRO", "COMERCIAL", "GAO", "GESTÃO DE CONTRATOS", "SUPRIMENTOS", "TI", "DIRETORIA", "RECEPÇÃO", "REGIONAL_2", "REGIONAL_3", "REGIONAL_1", "REGIONAL_4", "REGIONAL_5", "REGIONAL PROJETO_ALFA"]
                     t_regional = st.selectbox("Departamento/Regional", options=regionais_opcoes)
                     t_data_entrega = st.date_input("Data de Entrega (DD/MM/AAAA)", format="DD/MM/YYYY")
                     

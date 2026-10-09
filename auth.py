@@ -7,7 +7,7 @@ def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
 def get_users_db_path():
-    return "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/usuarios.json"
+    return "Pasta_Compartilhada/Painel_Gestao/usuarios.json"
 
 def load_users_db():
     import json

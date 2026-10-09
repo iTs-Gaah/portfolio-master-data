@@ -17,7 +17,7 @@ load_dotenv()
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from onedrive_downloader import download_excel_from_onedrive, list_onedrive_folder, download_json_from_onedrive
 
-PASTA_BASE_ONEDRIVE = "Administrativo/Qualidade/Área de Cadastros/Painel Gestão de Cadastros/Parceiro_Y"
+PASTA_BASE_ONEDRIVE = "Pasta_Compartilhada/Painel_Gestao/Parceiro_Y"
 
 def encontrar_planilha_onedrive():
     try:

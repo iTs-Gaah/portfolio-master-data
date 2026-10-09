@@ -34,12 +34,12 @@ def download_excel_from_onedrive(caminho_onedrive):
         import urllib.parse
         
         if "Controle Cadastros.xlsx" in caminho_onedrive:
-            site_id = "empresaxcombr.sharepoint.com,SITE_ID_PLACEHOLDER,WEB_ID_PLACEHOLDER"
+            site_id = "corporativo.sharepoint.com,SITE_ID_PLACEHOLDER,WEB_ID_PLACEHOLDER"
             caminho_encoded = urllib.parse.quote(caminho_onedrive)
             url_file = f"https://graph.microsoft.com/v1.0/sites/{site_id}/drive/root:/{caminho_encoded}:/content"
         else:
-            site_path = "SGQ-SistemadeGestodaQualidade-Gesto"
-            url_drive = f"https://graph.microsoft.com/v1.0/sites/empresaxcombr.sharepoint.com:/sites/{site_path}:/drive"
+            site_path = "Intranet-Qualidade"
+            url_drive = f"https://graph.microsoft.com/v1.0/sites/corporativo.sharepoint.com:/sites/{site_path}:/drive"
             resp_drive = requests.get(url_drive, headers=headers)
             if resp_drive.status_code != 200:
                 raise Exception(f"Erro ao obter o Drive do SharePoint: HTTP {resp_drive.status_code} - {resp_drive.text}")
@@ -80,12 +80,12 @@ def get_onedrive_file_last_modified(caminho_onedrive):
         import urllib.parse
         
         if "Controle Cadastros.xlsx" in caminho_onedrive:
-            site_id = "empresaxcombr.sharepoint.com,SITE_ID_PLACEHOLDER,WEB_ID_PLACEHOLDER"
+            site_id = "corporativo.sharepoint.com,SITE_ID_PLACEHOLDER,WEB_ID_PLACEHOLDER"
             caminho_encoded = urllib.parse.quote(caminho_onedrive)
             url_file = f"https://graph.microsoft.com/v1.0/sites/{site_id}/drive/root:/{caminho_encoded}"
         else:
-            site_path = "SGQ-SistemadeGestodaQualidade-Gesto"
-            url_drive = f"https://graph.microsoft.com/v1.0/sites/empresaxcombr.sharepoint.com:/sites/{site_path}:/drive"
+            site_path = "Intranet-Qualidade"
+            url_drive = f"https://graph.microsoft.com/v1.0/sites/corporativo.sharepoint.com:/sites/{site_path}:/drive"
             resp_drive = requests.get(url_drive, headers=headers)
             if resp_drive.status_code != 200:
                 return None
@@ -118,8 +118,8 @@ def list_onedrive_folder(caminho_onedrive):
         caminho_onedrive = caminho_onedrive.lstrip('/')
         import urllib.parse
         
-        site_path = "SGQ-SistemadeGestodaQualidade-Gesto"
-        url_drive = f"https://graph.microsoft.com/v1.0/sites/empresaxcombr.sharepoint.com:/sites/{site_path}:/drive"
+        site_path = "Intranet-Qualidade"
+        url_drive = f"https://graph.microsoft.com/v1.0/sites/corporativo.sharepoint.com:/sites/{site_path}:/drive"
         resp_drive = requests.get(url_drive, headers=headers)
         if resp_drive.status_code != 200:
             raise Exception(f"Erro ao obter o Drive do SharePoint: HTTP {resp_drive.status_code} - {resp_drive.text}")
@@ -158,12 +158,12 @@ def upload_excel_to_onedrive(caminho_onedrive, file_bytes):
         import urllib.parse
         
         if "Controle Cadastros.xlsx" in caminho_onedrive:
-            site_id = "empresaxcombr.sharepoint.com,SITE_ID_PLACEHOLDER,WEB_ID_PLACEHOLDER"
+            site_id = "corporativo.sharepoint.com,SITE_ID_PLACEHOLDER,WEB_ID_PLACEHOLDER"
             caminho_encoded = urllib.parse.quote(caminho_onedrive)
             url_upload = f"https://graph.microsoft.com/v1.0/sites/{site_id}/drive/root:/{caminho_encoded}:/content"
         else:
-            site_path = "SGQ-SistemadeGestodaQualidade-Gesto"
-            url_drive = f"https://graph.microsoft.com/v1.0/sites/empresaxcombr.sharepoint.com:/sites/{site_path}:/drive"
+            site_path = "Intranet-Qualidade"
+            url_drive = f"https://graph.microsoft.com/v1.0/sites/corporativo.sharepoint.com:/sites/{site_path}:/drive"
             resp_drive = requests.get(url_drive, headers=headers)
             if resp_drive.status_code != 200:
                 raise Exception(f"Erro ao obter Drive para Upload: HTTP {resp_drive.status_code}")
@@ -204,8 +204,8 @@ def download_json_from_onedrive(caminho_onedrive):
         caminho_onedrive = caminho_onedrive.lstrip('/')
         import urllib.parse
         
-        site_path = "SGQ-SistemadeGestodaQualidade-Gesto"
-        url_drive = f"https://graph.microsoft.com/v1.0/sites/empresaxcombr.sharepoint.com:/sites/{site_path}:/drive"
+        site_path = "Intranet-Qualidade"
+        url_drive = f"https://graph.microsoft.com/v1.0/sites/corporativo.sharepoint.com:/sites/{site_path}:/drive"
         resp_drive = requests.get(url_drive, headers=headers)
         if resp_drive.status_code != 200:
             raise Exception(f"Erro ao obter o Drive do SharePoint: HTTP {resp_drive.status_code} - {resp_drive.text}")
