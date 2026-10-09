@@ -10,7 +10,7 @@ Em corporações com grandes volumes de dados operacionais e financeiros, a extr
 3. **Controle de Acessos e Segurança:** O desafio de compartilhar informações gerenciais com segurança, garantindo que cada usuário acesse exclusivamente os painéis referentes à sua área de atuação (silos de permissão).
 
 **A Solução:**
-O projeto conta com um **Bot Agendador** rodando em background (24/7) para automatizar rotinas de extração. Ele conecta-se a bases de dados (DW e Datalakes), processa as informações e sincroniza os arquivos finais na nuvem corporativa e no repositório local. Em paralelo, um **Painel de Gestão (Dashboard Web)** consome esses dados com um sistema de autenticação próprio e controle de nível de acesso (RBAC).
+O projeto conta com um **Bot Agendador** rodando em background (24/7) para automatizar rotinas de extração. Ele conecta-se a bases de dados (DW e Datalake), processa as informações e sincroniza os arquivos finais na nuvem corporativa e no repositório local. Em paralelo, um **Painel de Gestão (Dashboard Web)** consome esses dados com um sistema de autenticação próprio e controle de nível de acesso (RBAC).
 
 ## 🏗️ Arquitetura da Solução
 
@@ -61,13 +61,13 @@ A plataforma foi arquitetada para ser executada rapidamente em qualquer máquina
    DW_USER=usuario_dw
    DW_PASS=senha_dw
    DW_NAME=nome_dw
-   DW_PORT=3306
+   DW_PORT=5001
 
    DB2_HOST=localhost
    DB2_USER=usuario_datalake
    DB2_PASS=senha_datalake
    DB2_NAME=nome_datalake
-   DB2_PORT=5432
+   DB2_PORT=5002
 
    # Configurações de API e Segurança
    AZURE_TENANT_ID=xxxx
@@ -97,4 +97,4 @@ A plataforma foi arquitetada para ser executada rapidamente em qualquer máquina
 - **Performance e Escalabilidade:** A segregação das rotinas de extração (Bot) da visualização (Streamlit) garante que a ferramenta web opere sem lentidão durante o processamento das rotinas pesadas (que envolvem leitura e exportação de dezenas de milhares de linhas para o Excel de forma agrupada).
 
 ---
-*Aviso: Este repositório serve estritamente como demonstração de habilidades em Engenharia de Dados, Arquitetura de Software e Desenvolvimento em Python. Todos os dados sensíveis, lógicas de negócios específicas da organização, credenciais, URLs corporativas e nomes de sistemas de terceiros foram cuidadosamente removidos ou substituídos por nomenclaturas genéricas e dados ilustrativos para fins de segurança e compliance.*
+*Aviso: Este repositório serve estritamente como demonstração de habilidades em Engenharia de Dados, Arquitetura de Software e Desenvolvimento em Python. Todos os dados sensíveis, lógicas de negócios específicas da organização, credenciais, URLs corporativas e nomes de sistemas de terceiros foram removidos ou substituídos por nomenclaturas genéricas e dados ilustrativos para fins de segurança e compliance.*
